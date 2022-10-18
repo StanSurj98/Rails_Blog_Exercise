@@ -10,9 +10,29 @@ class ArticlesController < ApplicationController
   def show
     # similar to [req.params.id] in Node/Express for endpoint of a SINGLE article
     @article = Article.find(params[:id])
-
     # by default, show action renders app/views/articles/show.html.erb
   end
+
+  # Let's now create action methods for creating a new article
+  def new
+    @article = Article.new # instantiates new article, but DOESN'T SAVE
+  end
+
+  def create
+    # instantiates AND saves new article to DB
+    @article = Article.new(title: "...", body: "...") # dummy values, will change when we create form
+
+    # on successful save, redirects to /article/:id
+    if @article.save
+      # !! NOTE !! important to use redirect_to after mutating DB, else req sent to same site and keeps making new articles
+      redirect_to @article
+    else
+      # on failure, re-displays the form from views/articles/new.html.erb
+      render :new
+    end
+  end
+
+
 end
 
 # Anything inside the index method here is delivered to the views html which the browser sees, served by our server (similarly to EJS)
