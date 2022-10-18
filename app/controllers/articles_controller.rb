@@ -6,6 +6,13 @@ class ArticlesController < ApplicationController
     # Controller INSTANCE variables, can be accessed by the view
     # Meaning... we can reference @articles in app/views/articles/index.html.erb
   end
+
+  def show
+    # similar to [req.params.id] in Node/Express for endpoint of a SINGLE article
+    @article = Article.find(params[:id])
+
+    # by default, show action renders app/views/articles/show.html.erb
+  end
 end
 
 # Anything inside the index method here is delivered to the views html which the browser sees, served by our server (similarly to EJS)
