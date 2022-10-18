@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :articles
   # The "Prefix" column + suffix of _url or _path form the names of path helpers 
   # For example, `article_path` helper returns "/articles/#{article.id}" when given an article.
+
+  # an even BETTER way is to do <%= link_to arg1, arg2 %> as a helper in the ERB
+  # arg1 = the link's text
+  # arg2 = the link's destination
+  # automatically calls the path helper of article_path inside the ERB in index.html.erb
 end
 
 # Remember this mantra...
