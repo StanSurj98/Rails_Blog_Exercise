@@ -13,11 +13,13 @@ class ArticlesController < ApplicationController
     # by default, show action renders app/views/articles/show.html.erb
   end
 
-  # Let's now create action methods for creating a new article
+  # GET `/articles/new` goes to this `new` method, you can fill form but doesn't save yet...
   def new
     @article = Article.new # instantiates new article, but DOESN'T SAVE
   end
 
+  # Hitting SUBMIT => POST `/articles` and maps to this `create` method
+  # attempts to save and checks validation for the new article instance
   def create
     # Now during instatiating new article, it uses the filtered params in our private method below!
     @article = Article.new(article_params)
