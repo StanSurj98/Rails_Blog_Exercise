@@ -19,8 +19,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    # instantiates AND saves new article to DB
-    @article = Article.new(title: "...", body: "...") # dummy values, will change when we create form
+    # Now during instatiating new article, it uses the filtered params in our private method below!
+    @article = Article.new(article_params)
 
     # on successful save, redirects to /article/:id
     if @article.save
@@ -31,6 +31,12 @@ class ArticlesController < ApplicationController
       render :new
     end
   end
+
+  private
+    # Protects us against form injection, cleans up the params
+    def article_params
+      params.require(:article).permit(:title, :body)
+    end
 
 
 end
