@@ -1,25 +1,7 @@
 <h1>New Article</h1>
 
-<% # This is a form builder %>
+<%# Here we call our partials template, passing in article for our logic %>
+<%= render "form", article: @article %>
 
-<%= form_with model: @article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% @article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-    <% @article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+<%# Note how a partial's file name MUST be underscored: `/_partial.html.erb` %>
+<%# but when referenced, it's a string WITHOUT underscore %>

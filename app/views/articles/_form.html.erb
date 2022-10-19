@@ -1,0 +1,27 @@
+<%# This is our partial that shows a form page %>
+<%# ONLY difference is @article => article now %>
+<%# Since partials are SHARED views code %>
+<%# We don't want to depend on specific instance variables %>
+<%# PASS in the @instance_var to the partial from original `/new.html.erb` %>
+
+<%= form_with model: article do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+    <% article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

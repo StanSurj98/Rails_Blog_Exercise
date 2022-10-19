@@ -1,0 +1,8 @@
+<h1>Edit Article</h1>
+
+<%# Notice the code is super similar to /new.html.erb %>
+<%# pass in the specific article to the /_form.html.erb partial %>
+<%= render "form", article: @article %>
+
+<%# BUT - since we're in /edit.html.erb, it KNOWS that this is an update %>
+<%# Our controller action told it so! %>
