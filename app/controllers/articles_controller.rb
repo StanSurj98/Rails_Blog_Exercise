@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     # Again, we don't NEED to go to root path, just chose to
-    redirect_to_root_path
+    redirect_to root_path
   end
 
 
