@@ -34,8 +34,34 @@ class ArticlesController < ApplicationController
     end
   end
 
+
+  # Editing articles, GET `edit_article_path` maps to this action
+  # !! Reminder !! `bin/rails routes` shows available generated paths
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # POST/PUT `/articles/:id` maps to update
+  # Notice how `edit` and `update` resembles `new` and `create`? convention is great
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
+  end
+
+  # At this point, /views.../new.html.erb and /edit.html.erb should look pretty much the same
+  # We'll refactor and make a new partial to render a form page
+  # /views.../_form.html.erb
+
+
+
+
   private
-    # Protects us against form injection, cleans up the params
+    # Protects us against form injection, cleans up the `form data`
     def article_params
       params.require(:article).permit(:title, :body)
     end
