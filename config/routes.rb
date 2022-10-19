@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   # This simple command generates all most common routes for a resource type
   # seriously, it creates GETs, PUTs, POSTs, DELETEs IMMEDIATELY
-  # To inspect which routes were made console-> bin/rails routes 
+  # To inspect which routes were made console-> `bin/rails routes`
   resources :articles
   # The "Prefix" column + suffix of _url or _path form the names of path helpers 
   # For example, `article_path` helper returns "/articles/#{article.id}" when given an article.
