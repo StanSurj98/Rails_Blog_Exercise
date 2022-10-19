@@ -1,7 +1,10 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 
-
+<%# And adding in the link to go to edit page %>
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) </li>
+</ul>
 
 
 
