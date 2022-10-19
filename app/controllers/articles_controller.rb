@@ -58,6 +58,16 @@ class ArticlesController < ApplicationController
   # /views.../_form.html.erb
 
 
+  # Deleting! => Our resourceful routes already mapped:
+  # DELETE /articles/:id to our `destroy` action here
+  def destroy
+    # Finds the correct article in DB by id, deletes it, returns to root path
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    # Again, we don't NEED to go to root path, just chose to
+    redirect_to_root_path
+  end
 
 
   private

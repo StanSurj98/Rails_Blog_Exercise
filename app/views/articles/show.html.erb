@@ -3,7 +3,18 @@
 
 <%# And adding in the link to go to edit page %>
 <ul>
-  <li><%= link_to "Edit", edit_article_path(@article) </li>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+
+  <li>
+    <%= link_to "Destroy", article_path(@article), 
+      # necessary here to do a "DELETE" req vs a normal "GET"
+      method: :delete,
+      # Pop-up, users can still cancel here
+      data: { confirm: "Are you sure you want to delete?" } 
+
+      # both methods above come form Unobtrussive JavaScript (UJS) - comes with fresh rails app
+    %>
+  </li>
 </ul>
 
 
